@@ -3,7 +3,6 @@
 const fs = require('fs')
 const path = require('path')
 const { getAllDirectoryFiles, createAndWrite, getUserHome, btoa } = require('./src/utils')
-const { execSync } = require('child_process')
 const template = require('./src/template')
 
 const args = process.argv.slice(2)
@@ -31,18 +30,13 @@ const defaultOptions = (filepath = process.cwd()) => {
     dirpath: path.resolve(filepath),
     name: filepath.split('/').slice(-1)[0],
     hash_path: btoa(path.resolve(filepath)).replace(/=/g, ''),
-    files: htmlFiles,
-    tree: execSync(`tree -I "(node_modules|tmp|build|out|__pycache__)" -P '*.html' --noreport --dirsfirst ${path.resolve(filepath)}`).toString().split('\n'),
-    tree_files: JSON.parse(execSync(`tree  -I "(node_modules|tmp|build|out|__pycache__)" -P '*.html' --noreport --dirsfirst -f -J ${path.resolve(filepath)}`).toString())
+    files: htmlFiles
   }
 }
 
 const data = defaultOptions(args[0])
 const htmloutputpath = `${getUserHome()}/.hv/${data.name}-${data.hash_path.slice(-10)}.html`
+
 createAndWrite(htmloutputpath, template(data))
-createAndWrite(
-  htmloutputpath.replace('.html', '.js'),
-  [ 'const data', JSON.stringify(data, null, 2), ].join(' = ')
-)
 
 console.log(htmloutputpath)
