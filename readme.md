@@ -3,11 +3,10 @@
 
 Simple tool for viewing all your web pages in one place  using iframes as a target for links
 
-<center>
-<img src="assets/htmlviewer.svg" width="300px"/>
-</center>
+<p align="center">
+<img src="https://github.com/nntrn/htmlviewer/blob/main/assets/htmlviewer.svg?raw=true" width="300px"/>
+</p>
 
-<br>
 
 ## Install
 
@@ -23,11 +22,9 @@ htmlviewer /path/with/html/files
 
 ## Example
 
-
-
-<center>
-<img src="assets/git-htmldoc-example.png" width="400px"/>
-</center>
+<p align="center">
+<img src="https://github.com/nntrn/htmlviewer/blob/main/assets/git-htmldoc-example.png?raw=true" width="400px"/>
+</p>
 
 ```sh
 cd /tmp
