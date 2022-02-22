@@ -1,10 +1,10 @@
 # htmlviewer
-![npm](https://img.shields.io/npm/v/htmlviewer.svg?style=flat-square)
+[![npm version](https://img.shields.io/npm/v/htmlviewer.svg?style=flat-square)](https://www.npmjs.com/package/htmlviewer)
 
 Simple tool for viewing all your web pages in one place  using iframes as a target for links
 
 <p align="center">
-<img src="https://github.com/nntrn/htmlviewer/blob/main/assets/htmlviewer.svg?raw=true" width="300px"/>
+<img src="https://github.com/nntrn/htmlviewer/blob/main/assets/htmlviewer.svg?raw=true" width="300px">
 </p>
 
 
@@ -22,13 +22,15 @@ htmlviewer /path/with/html/files
 
 ## Example
 
-<p align="center">
-<img src="https://github.com/nntrn/htmlviewer/blob/main/assets/git-htmldoc-example.png?raw=true" width="400px"/>
-</p>
-
 ```sh
 cd /tmp
 git clone https://github.com/git/htmldocs.git
 htmlviewer /tmp/htmldocs
 ```
+
+<p align="center">
+<img src="https://github.com/nntrn/htmlviewer/blob/main/assets/git-htmldoc-example.png?raw=true" width="400px"/>
+</p>
+
+
 
