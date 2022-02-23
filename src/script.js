@@ -8,11 +8,11 @@ function createElementId(id, root = document) {
 
 }
 
-function createTocLink(obj) {
+function createTocLink(obj, targetName) {
   return Object.assign(document.createElement('a'), {
     innerHTML: obj.title,
     href: obj.path,
-    target: 'iframe'
+    target: targetName
   })
 }
 
@@ -65,9 +65,9 @@ function createToc(data) {
         a.appendChild(c)
       }
       return c
-    }, document.querySelector('#toc'))
+    }, document.querySelector(`#${data.dom.toc.id}`))
 
-    reduced.appendChild(createTocLink(file))
+    reduced.appendChild(createTocLink(file, data.dom.iframe.name))
   })
 
 }
