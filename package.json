@@ -4,12 +4,19 @@
   "bin": {
     "htmlviewer": "main.js"
   },
-  "description": "generator for easily viewing all HTML pages in a directory",
+  "description": "CLI tool for viewing webpages in one place",
   "main": "main.js",
   "keywords": [
     "html",
-    "iframe"
+    "iframe",
+    "webpages",
+    "cli",
+    "embedded"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nntrn/htmlviewer.git"
+  },
   "type": "commonjs",
   "author": "annie tran (https://github.com/nntrn)",
   "license": "MIT",

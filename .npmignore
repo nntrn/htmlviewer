@@ -1,5 +1,2 @@
-.vscode
-.eslintrc.js
-examples
-.eslintignore
-scripts
+assets
+.eslint*
