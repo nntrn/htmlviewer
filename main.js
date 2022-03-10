@@ -29,12 +29,14 @@ function getNameFromPath(dirpath, maxFileNameLen = 140) {
   return name[1].filter(Boolean).join('-')
 }
 
-function getDataHV(filepath = process.cwd(), userOptions = {}) {
+function createHtmlViewer(filepath = process.cwd(), userOptions = {}) {
+  const realfilepath = fs.realpathSync(filepath)
+  const title = path.basename(realfilepath)
   const resolvedpath = path.resolve(filepath)
   const rootFiles = getAllDirectoryFiles(resolvedpath)
 
   const htmlFiles = rootFiles
-    .filter(e => /\.html$/.test(e.toLowerCase(), 'i'))
+    .filter(e => /\.(x)?html$/.test(e.toLowerCase(), 'i'))
     .map(e => readHTML(e, resolvedpath))
 
   return {
@@ -44,6 +46,7 @@ function getDataHV(filepath = process.cwd(), userOptions = {}) {
     name: filepath.split('/').slice(-1)[0],
     sep: path.sep,
     files: htmlFiles,
+    title: title,
     dom: {
       toc: { id: 'hvtoc' },
       iframe: { id: 'hvframe', name: 'hvframe' }
@@ -52,9 +55,10 @@ function getDataHV(filepath = process.cwd(), userOptions = {}) {
   }
 }
 
-const data = getDataHV(args[0])
+const data = createHtmlViewer(args[0])
 const htmloutputpath = [getUserHome(), '.hv', data.hvname + '.html'].join(path.sep)
 
 createAndWrite(htmloutputpath, template(data))
 
-console.log(htmloutputpath)
+console.log(template(data))
+

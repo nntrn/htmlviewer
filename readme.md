@@ -17,7 +17,7 @@ npm install -g htmlviewer
 ## Usage
 
 ```sh
-htmlviewer /path/with/html/files
+htmlviewer /path/with/html/files > /path/htmlviewer.html
 ```
 
 ## Example
