@@ -1,0 +1,25 @@
+{
+  "name": "htmlviewer",
+  "version": "2.0.0",
+  "bin": {
+    "htmlviewer": "main.js"
+  },
+  "description": "CLI tool for viewing webpages in one place",
+  "main": "main.js",
+  "keywords": [
+    "html",
+    "iframe",
+    "webpages",
+    "cli",
+    "embedded"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nntrn/htmlviewer.git"
+  },
+  "type": "commonjs",
+  "author": "annie tran (https://github.com/nntrn)",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {}
+}
