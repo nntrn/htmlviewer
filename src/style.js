@@ -5,7 +5,7 @@ function createStyle(data) {
   return `
   <style>
     *,*:after{box-sizing:border-box}
-    body{position:relative;overflow:hidden;height:100%;width:100%;margin:auto;padding:1em 4em;font-family:monospace;}
+    body{position:relative;overflow:auto;height:100%;width:100%;margin:auto;padding:1em 4em;font-family:monospace;}
     article{display:flex; gap:1em;height:80vh;overflow:hidden}
     ${iframeId}{width:100%;transition:all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);border:5px solid #222;background:white;}
     ${tocId}{overflow-y:scroll;padding:0;width:fit-content;max-width:50vw;word-break: break-word;}

@@ -61,17 +61,21 @@ function createHtmlViewer(filepath = process.cwd(), userOptions = {}) {
 
   return Object.assign({
     root: filepath,
+    cwd: cwd,
     dirpath: resolvedpath,
     hvname: getNameFromPath(resolvedpath.replace(getUserHome(), '')),
     name: filepath.split(path.sep).slice(-1)[0],
+    resolved: resolvedpath,
+
     sep: path.sep,
-    files: htmlFiles,
     title: title,
     toc: tocObject,
     dom: {
       toc: { id: 'hvtoc' },
       iframe: { id: 'hvframe', name: 'hvframe', sandbox: 'allow-scripts' }
-    }
+    },
+    root: rootFiles,
+    files: htmlFiles,
   }, userOptions)
 }
 

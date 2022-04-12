@@ -22,7 +22,7 @@ const htmlTemplate = (props = this.defaultProps) => `<!DOCTYPE html>
 <body>
 <main>
   <header>
-    <h1><strong>htmlviewer:</strong> ${props.title}</h1>
+    <h1><strong>${props.title}</strong></h1>
     <h3>${props.dirpath}</h3>
   </header>
   <article>
@@ -33,6 +33,8 @@ const htmlTemplate = (props = this.defaultProps) => `<!DOCTYPE html>
     <div>Created using <a href="https://github.com/nntrn/htmlviewer">htmlviewer</a></div>
   </footer>
 </main>
+<pre>${JSON.stringify(props, null, 2)}
+</pre>
 <script>
   const data = ${JSON.stringify(props, null, 2)}
 </script>

@@ -17,7 +17,7 @@
     "type": "git",
     "url": "https://github.com/nntrn/htmlviewer.git"
   },
-  "type": "commonjs",
+
   "author": "annie tran (https://github.com/nntrn)",
   "license": "MIT",
   "devDependencies": {},
