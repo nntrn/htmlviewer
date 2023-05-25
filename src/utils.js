@@ -2,11 +2,11 @@ const fs = require('fs')
 const path = require('path')
 
 function createAndWrite(dirPath = '', data = '') {
-  if(!dirPath) {
+  if (!dirPath) {
     return data
   }
   fs.mkdir(path.dirname(dirPath), { recursive: true }, function () {
-    if(typeof data === 'object') {
+    if (typeof data === 'object') {
       fs.writeFileSync(dirPath, JSON.stringify(data, null, 2))
     } else {
       fs.writeFileSync(dirPath, data)
@@ -16,7 +16,7 @@ function createAndWrite(dirPath = '', data = '') {
 }
 
 function parseArgs(args) {
-  if(args.join(' ').indexOf('--') < 0) {
+  if (args.join(' ').indexOf('--') < 0) {
     return args
   }
   let stdIn = args.join(' ').split('>')[0].split(' ')
@@ -38,11 +38,12 @@ function pipe(...fns) {
 }
 
 function read(filePath) {
-  if(fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+  if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
     var fileStr = fs.readFileSync(filePath, 'utf-8')
-    if(/\.json$/.test(filePath)) {
-      try { fileStr = JSON.parse(fileStr)
-      } catch (e) {}
+    if (/\.json$/.test(filePath)) {
+      try {
+        fileStr = JSON.parse(fileStr)
+      } catch (e) { }
     }
     return fileStr
   }
@@ -50,7 +51,7 @@ function read(filePath) {
 
 function fold(str, size, arr) {
   arr = arr || []
-  if(str.length <= size) {
+  if (str.length <= size) {
     arr.push(str)
     return arr
   }
@@ -64,10 +65,21 @@ function getISODate(dt = new Date) {
   return (new Date(dt)).toISOString().split('T')[0]
 }
 
+
+function testBinary(filepath) {
+  var encoding1 = 'binary';
+  var encoding2 = 'binary';
+  var a = fs.readFileSync('./testdoc.pdf');
+  var b = new Buffer(fs.readFileSync('./testdoc.pdf', encoding1), encoding2);
+  console.log('Object equality:', a === b);
+  console.log('Buffer equality:', a.equals(b));
+}
+
+
 function getAllDirectoryFiles(dirPath) {
   return fs.readdirSync(dirPath)
     .map(e => path.join(dirPath, e))
-    .map(file => fs.statSync(file).isDirectory() ? getAllDirectoryFiles(file) : file)
+    .map(file => fs.statSync(file).isDirectory() ? getAllDirectoryFiles(file) : file.replace(/\\+/g, '/'))
     .flat()
 }
 
@@ -90,7 +102,7 @@ function formatNote(str = '') {
 }
 
 function detectScriptLine(str) {
-  if(str.charAt(0) === '$' && str.charAt(1) !== '(') {
+  if (str.charAt(0) === '$' && str.charAt(1) !== '(') {
     return true
   }
   return false

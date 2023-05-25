@@ -1,8 +1,22 @@
 const styleCss = require('./style')
 const scripts = require('./script')
 
-const scriptString = Object.values(scripts).map(s => s.toString().split('\n').map(e => '  ' + e).join('\n'))
+// const scriptString = Object.values(scripts).map(s => s.toString().split('\n').map(e => '  ' + e).join('\n'))
 
+const scriptString = (data) => `
+const ul = document.querySelector("#${data.toc_id} ul")
+
+data.files.forEach(el=>{
+  let li = document.createElement('li')
+  li.appendChild(Object.assign(document.createElement('a'), {
+    href: el, 
+    target: "${data.iframe_name}",
+    textContent: el.replace(data.root,'')
+  }))
+
+  ul.appendChild(li)
+})
+`
 function createTemplate(data) {
   return [
     '<!doctype html>',
@@ -16,12 +30,12 @@ function createTemplate(data) {
     '<body>',
     '<main>',
     '<header>',
-    `  <h1><strong>htmlviewer:</strong> ${data.title}</h1>`,
+    `  <h1>htmlviewer</h1>`,
     `  <h3>${data.dirpath}</h3>`,
     '</header>',
     '<article>',
-    `  <div id="${data.dom.toc.id}"></div>`,
-    `  <iframe name="${data.dom.iframe.name}" id="${data.dom.iframe.id}" sandbox="allow-scripts"></iframe>`,
+    `  <div id="${data.toc_id}"><ul></ul></div>`,
+    `  <iframe name="${data.iframe_name}" id="${data.iframe_name}"></iframe>`,
     '</article>',
     '<footer>',
     `Created using <a href="https://github.com/nntrn/htmlviewer">htmlviewer</a>`,
@@ -31,8 +45,8 @@ function createTemplate(data) {
     `  const data = ${JSON.stringify(data, null, 2)}`,
     '</script>',
     '<script>',
-    scriptString,
-    '  createToc(data)',
+    scriptString(data),
+    // '  createToc(data)',
     '</script>',
     '</body>',
     '',

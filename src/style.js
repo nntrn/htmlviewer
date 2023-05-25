@@ -1,6 +1,6 @@
 function createStyle(data) {
-  const tocId = `#${data.dom.toc.id}`
-  const iframeId = `#${data.dom.iframe.id}`
+  const tocId = `#${data.toc_id}`
+  const iframeId = `#${data.iframe_name}`
 
   return `
   <style>
@@ -12,7 +12,7 @@ function createStyle(data) {
     ${tocId} span:hover{font-weight:bold }
     ${tocId} span{cursor:pointer;}
     ${tocId} a{text-decoration:none;line-height:100%}
-    ${tocId} a:after{content:attr(href);display:block;font-size:90%;color:#999;border-bottom:none;text-decoration:none;}
+    ${tocId}-old a:after{content:attr(href);display:block;font-size:90%;color:#999;border-bottom:none;text-decoration:none;}
     body{position:relative;overflow:hidden;height:100%;width:100%;margin:auto;padding:1em 4em;font-family:monospace;font-size:85%}
     ${tocId},${iframeId}{overflow-y:scroll}
     header{margin-bottom:2em}
